@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>navbar</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+:root{
+	--clr: #222327;
+}
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background:var(--clr) ;
+	min-height: 100vh;
+
+}
+.navigation{
+	position: relative;
+	width: 353px;
+	height: 70px;
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+}
+.navigation ul{
+	display: flex;
+	width: 100%;
+}
+.navigation ul li{
+	list-style: none;
+	position: relative;
+	width: 70px;
+	height: 70px;
+	z-index: 1;
+}
+.navigation ul li a {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	text-align: center;
+	font-weight: 500;
+}
+
+.navigation ul li a .icon{
+	position: relative;
+	display: block;
+	line-height: 75px;
+	font-size: 1.5rem;
+	text-align: center;
+	transition: 0.5s;
+	color: var(--clr);
+}
+
+.navigation ul li a .text{
+	position: absolute;
+	color: var(--clr);
+	top: 13px;	  
+	font-weight: bold;
+	transition: 0.5s;
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+.indicator{
+	position: absolute;
+	top:-41px;
+	left: 5px;
+	width:60px;
+	height:60px;
+	background-color: #29fd53;
+	border-radius: 50%;
+	border: 6px solid var(--clr);
+	transition: 0.5s;
+}
+.indicator::before{
+	content: '';
+	position: absolute;
+	top: 73%;
+	left: -15px;
+	width: 20px;
+	height: 20px;
+	background: transparent;
+	border-top-right-radius: 20px;
+	box-shadow: 0px -10px 0px 0px var(--clr);
+}
+.indicator::after{
+	content: '';
+	position: absolute;
+	top: 73%;
+	right: -15px;
+	width: 20px;
+	height: 20px;
+	background: transparent;
+	border-top-left-radius: 20px;
+	box-shadow: 0px -10px 0px 0px var(--clr);
+}
+</style>
+</head>
+<body>
+	<div class="navigation">
+		<ul>
+			<li class="list active" id="1">
+				<a href="#">	<span class="icon 1"><i class="fa fa-home" aria-hidden="true"></i></span>
+					<span class="text e">Home</span>
+				</a>
+			</li>
+			<li class="list active" id="2">
+				<a href="#">	<span class="icon 2"><i class="fa fa-user" aria-hidden="true"></i></span>
+					<span class="text d">profile</span>
+				</a>
+			</li>
+			<li class="list active" id="3">
+				<a href="#">	<span class="icon 3"><i class="fa fa-comment" aria-hidden="true"></i></span>
+					<span class="text c">message</span>
+				</a>
+			</li>
+			<li class="list active" id="4">
+				<a href="#">	<span class="icon 4"><i class="fa fa-cog" aria-hidden="true"></i></span>
+					<span class="text b">setting</span>
+				</a>
+			</li>
+			<li class="list active" id="5">
+				<a href="#">	<span class="icon 5"><i class="fa fa-camera" aria-hidden="true"></i></span>
+					<span class="text a">photo</span>
+				</a>
+			</li>
+		</ul>
+		<div class="indicator"></div>
+	</div>
+<script>
+const list = document.querySelectAll('.list');
+
+function activeLink() {
+    list.forEach((item) =>
+        item.classList.remove('active'));
+    this.classList.add('active')
+}
+list.forEach((item) =>
+    item.addEventListener('click', activeLink));
+</script>
+<script>
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.onkeydown = function(e) {
+    if (event.keyCode == 123) {
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+    }
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+    }
+}
+</script>
+<script>
+$(document).ready(function() {
+    $("#1").mouseenter(function() {
+        $(".indicator").css({
+            "transform": "translate(0px)"
+        });
+        $(".1").css({
+            "transform": "translateY(-45px)"
+        });
+        $(".e").css({
+            "opacity": "1",
+            "transform": "translateY(20px)"
+        });
+    });
+    $("#2").mouseenter(function() {
+        $(".indicator").css({
+            "transform": "translate(70px)"
+        });
+        $(".2").css({
+            "transform": "translateY(-45px)"
+        });
+        $(".d").css({
+            "opacity": "1",
+            "transform": "translateY(20px)"
+        });
+    });
+    $("#3").mouseenter(function() {
+        $(".indicator").css({
+            "transform": "translate(140px)"
+        });
+        $(".3").css({
+            "transform": "translateY(-46px)"
+        });
+        $(".c").css({
+            "opacity": "1",
+            "transform": "translateY(20px)"
+        });
+    });
+    $("#4").mouseenter(function() {
+        $(".indicator").css({
+            "transform": "translate(210px)"
+        });
+        $(".4").css({
+            "transform": "translateY(-45px)"
+        });
+        $(".b").css({
+            "opacity": "1",
+            "transform": "translateY(20px)"
+        });
+    });
+    $("#5").mouseenter(function() {
+        $(".indicator").css({
+            "transform": "translate(280px)"
+        });
+        $(".5").css({
+            "transform": "translateY(-45px)"
+        });
+        $(".a").css({
+            "opacity": "1",
+            "transform": "translateY(20px)"
+        });
+    });
+    $("#1").mouseleave(function() {
+        $(".1").css({
+            "transform": "translateY(0px)"
+        });
+        $(".e").css({
+            "opacity": "0"
+        });
+    });
+    $("#2").mouseleave(function() {
+        $(".2").css({
+            "transform": "translateY(0px)"
+        });
+        $(".d").css({
+            "opacity": "0"
+        });
+    });
+    $("#3").mouseleave(function() {
+        $(".3").css({
+            "transform": "translateY(0px)"
+        });
+        $(".c").css({
+            "opacity": "0"
+        });
+    });
+    $("#4").mouseleave(function() {
+        $(".4").css({
+            "transform": "translateY(0px)"
+        });
+        $(".b").css({
+            "opacity": "0"
+        });
+    });
+    $("#5").mouseleave(function() {
+        $(".5").css({
+            "transform": "translateY(0px)"
+        });
+        $(".a").css({
+            "opacity": "0"
+        });
+    });
+
+});
+</script>
+</body>
+</html>
